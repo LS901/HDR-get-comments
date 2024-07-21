@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1721518278268" clover="3.2.0">
+  <project timestamp="1721518278268" name="All files">
+    <metrics statements="21" coveredstatements="20" conditionals="7" coveredconditionals="6" methods="9" coveredmethods="9" elements="37" coveredelements="35" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
+    <file name="get-comments.ts" path="/Users/LewiSaun/Documents/SideProjects/end-user-comments/src/service/get-comments.ts">
+      <metrics statements="21" coveredstatements="20" conditionals="7" coveredconditionals="6" methods="9" coveredmethods="9"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="4" count="7" type="stmt"/>
+      <line num="5" count="7" type="stmt"/>
+      <line num="6" count="6" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="20" count="7" type="stmt"/>
+      <line num="21" count="7" type="stmt"/>
+      <line num="22" count="7" type="stmt"/>
+      <line num="23" count="7" type="stmt"/>
+      <line num="24" count="7" type="stmt"/>
+      <line num="26" count="6" type="cond" truecount="0" falsecount="1"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="30" count="6" type="stmt"/>
+      <line num="33" count="6" type="cond" truecount="1" falsecount="0"/>
+      <line num="34" count="3" type="stmt"/>
+      <line num="35" count="3" type="stmt"/>
+      <line num="36" count="450" type="stmt"/>
+      <line num="37" count="600" type="stmt"/>
+      <line num="42" count="6" type="stmt"/>
+      <line num="44" count="900" type="cond" truecount="2" falsecount="0"/>
+    </file>
+  </project>
+</coverage>
