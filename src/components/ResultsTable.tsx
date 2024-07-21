@@ -63,11 +63,11 @@ const ResultsTable = () => {
             </table>
             <div className="flex justify-center mt-8">
                 <button onClick={pageNumber > 1 ? () => setPageNumber(pageNumber - 1) : undefined}
-                        className={`${pageNumber === 1 && 'cursor-not-allowed'} flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}>
+                        className={`${pageNumber === 1 && 'cursor-not-allowed'} font-sans flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}>
                     Previous
                 </button>
                 <button onClick={pageNumber < finalPage ? () => setPageNumber(pageNumber + 1) : undefined}
-                        className={`${pageNumber === finalPage && 'cursor-not-allowed'} flex items-center justify-center px-3 h-8 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}>
+                        className={`${pageNumber === finalPage && 'cursor-not-allowed'} font-sans flex items-center justify-center px-3 h-8 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}>
                     Next
                 </button>
             </div>

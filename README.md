@@ -17,6 +17,9 @@ Run:
 `npm build`
 _For the UI:_`npm run dev`
 
+When calling the service; the default values are `page=1`, `total=25` and an empty omit string. In order to
+omit values correctly, the input string should be a **comma delimited string** (as set out by instructions) e.g.: `name,email`
+
 # Testing
 
 Tests can be run by `npm run test` 

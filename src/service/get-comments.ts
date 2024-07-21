@@ -41,7 +41,7 @@ export const getComments = async ({
     }
 
     //Pagination
-    const paginatedResult = response.slice(startOfPageEntry, endOfPageEntry);
+    const paginatedResult = response.slice(startOfPageEntry, endOfPageEntry)
 
     return {
         result: paginatedResult,

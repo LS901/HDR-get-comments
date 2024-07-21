@@ -33,7 +33,7 @@ const InputTable: React.FC<InputTableProps> = ({applyChanges, pageNumber, totalP
     }
 
     return (
-        <div className='flex justify-center items-center p-10 bg-purple-300 mb-2 rounded-lg'>
+        <div className='flex justify-center items-center p-10 bg-[#3db28c] mb-2 rounded-lg font-sans'>
             <label className='pr-3'>Page Number:</label><input type='text' id='page-number' value={page} onChange={handleChange}/>
             <label className='px-3'>Total items per page:</label><input type='text' id='total-per-page' value={total} onChange={handleChange}/>
             <label className='px-3'>Fields to exclude:</label><input type='text' id='excluded-fields' value={omit} onChange={handleChange}/>
