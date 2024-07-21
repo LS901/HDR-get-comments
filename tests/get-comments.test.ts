@@ -1,5 +1,4 @@
 import { getComments } from "../src/service/get-comments";
-// import mockResponseData from "./mocks/mock-comment-data.json"
 import '@testing-library/react'
 import '@testing-library/jest-dom'
 import axios from 'axios';
@@ -80,7 +79,7 @@ describe('GIVEN I am a developer using the get comments service' , () => {
     describe('WHEN the API response contains errors', () => {
         it('THEN it should throw an API error', async () => {
             jest.mocked(mockedAxios.get).mockRejectedValue(new Error('Error'));
-            await expect(getComments({})).rejects.toThrow('API response error. Error: Error');
+            await expect(getComments({})).rejects.toThrow('API response error: Error: Error');
         });
     })
 })

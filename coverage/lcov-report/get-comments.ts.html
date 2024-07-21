@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.65% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/23</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.23% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/21</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -109,12 +109,17 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,13 +134,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -150,20 +154,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">900x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
 import { CommentData,OmitValues } from "../types";
-&nbsp;
-const get = async (url: string) =&gt; {
-    return await axios.get(url)
-        .then((response) =&gt; response.data)
-        .catch((error) =&gt; {
-            throw new Error(`API response error. ${error}`);
-        });
+//Axios get request to fetch the API data
+const get = async (url: string): Promise&lt;any&gt; =&gt; {
+    try {
+        const response = await axios.get(url);
+        return response.data;
+    //If there is an error fetching the API data, an error is thrown here
+    } catch (error) {
+        throw new Error(`API response error: ${error}`);
+    }
 };
 interface GetCommentsParams {
     page?: number
@@ -175,16 +183,15 @@ export const getComments = async ({
   total = 25,
   omit = ''
 }: GetCommentsParams) =&gt; {
+    //These values allow the pagination logic implemented below in the return object
     const startOfPageEntry = (page * total) - total;
     const endOfPageEntry = (page * total);
+&nbsp;
     const url = `https://jsonplaceholder.typicode.com/comments`
     const response = await get(url) as Array&lt;CommentData&gt;;
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(!response) {
-<span class="cstat-no" title="statement not covered" >        return undefined;</span>
-    }
-&nbsp;
-    const fullListLength: number = response.length as number;
+    //This allows the Next button on the UI to disable once the last page has been reached
+    const fullListLength = response.length;
 &nbsp;
     //Omitting
     if(omit) {
@@ -196,9 +203,11 @@ export const getComments = async ({
         })
     }
 &nbsp;
+    //Pagination
+    const paginatedResult = response.slice(startOfPageEntry, endOfPageEntry);
+&nbsp;
     return {
-        //Pagination
-        result: response.filter((item) =&gt; startOfPageEntry &lt; item.id &amp;&amp; item.id &lt;= endOfPageEntry),
+        result: paginatedResult,
         numberOfEntries: fullListLength
     };
 };</pre></td></tr></table></pre>
@@ -208,7 +217,7 @@ export const getComments = async ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-20T23:31:18.265Z
+                at 2024-07-21T00:27:50.537Z
             </div>
         <script src="prettify.js"></script>
         <script>
