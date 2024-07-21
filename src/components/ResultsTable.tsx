@@ -27,7 +27,7 @@ const ResultsTable = () => {
 
     return (
         <div className='m-14 p-4 flex flex-col bg-gray-100 rounded-lg'>
-            <InputTable applyChanges={() => applyChanges} pageNumber={pageNumber} totalPerPage={totalPerPage} excludedFields={excludedFields}/>
+            <InputTable applyChanges={applyChanges} pageNumber={pageNumber} totalPerPage={totalPerPage} excludedFields={excludedFields}/>
             <table>
                 <thead>
                     <tr>

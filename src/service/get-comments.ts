@@ -26,10 +26,6 @@ export const getComments = async ({
     const url = `https://jsonplaceholder.typicode.com/comments`
     const response = await get(url) as Array<CommentData>;
 
-    if(!response) {
-        return undefined;
-    }
-
     //This allows the Next button on the UI to disable once the last page has been reached
     const fullListLength: number = response.length as number;
 
