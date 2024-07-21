@@ -22,6 +22,7 @@ _For the UI:_`npm run dev`
 Tests can be run by `npm run test` 
 
 - The tests were set up the match the acceptance criteria within the instructions document, plus ones around errors
+- It is worth mentioning I focused more on the value of the tests themselves, more so than coverage, as laid out in the instructions.
 
 # UI Component
 
